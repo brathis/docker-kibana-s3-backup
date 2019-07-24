@@ -5,7 +5,7 @@ COPY dobackup.sh /
 
 RUN \
 	mkdir -p /aws && \
-	apk -Uuv add groff less python py-pip && \
+	apk -Uuv add curl groff jq less python py-pip tzdata && \
 	pip install awscli && \
 	apk --purge -v del py-pip && \
 	rm /var/cache/apk/* && \

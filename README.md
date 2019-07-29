@@ -12,6 +12,7 @@ The container is configured via a set of environment variables:
 - KIBANA_PORT: The port that Kibana listens on
 - KIBANA_USER: A Kibana user with sufficient privileges to read any saved objects
 - KIBANA_PASSWORD: The password for said user
+- KIBANA_VERSION: The Kibana version string used in the `kbn-version` header, e.g. `7.2.0`
 - TZ: The timezone to be used inside the container
 
 All environment variables prefixed with 'AWS_' are directly used by [awscli](https://aws.amazon.com/cli/) that this image heavily relies on.
@@ -34,6 +35,7 @@ services:
       - KIBANA_PORT=5601
       - KIBANA_USER=kibana-backup-user
       - KIBANA_PASSWORD=sEcReTkIbAnApAsSw0rD
+      - KIBANA_VERSION=7.2.0
       - TZ=Europe/Zurich
     restart: always
 ```

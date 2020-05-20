@@ -1,6 +1,6 @@
 #!/bin/sh
 echo "creating Kibana backup"
-curl -XGET "http://$KIBANA_HOST:$KIBANA_PORT/api/saved_objects/_find?per_page=200&page=1&type=index-pattern&type=visualization&type=dashboard&type=search&sort_field=type" \
+curl -XGET "$KIBANA_SCHEME://$KIBANA_HOST:$KIBANA_PORT/api/saved_objects/_find?per_page=200&page=1&type=index-pattern&type=visualization&type=dashboard&type=search&sort_field=type" \
     -H 'Accept: application/json' \
     -H "kbn-version: $KIBANA_VERSION" \
     -u $KIBANA_USER:$KIBANA_PASSWORD | jq '.saved_objects' | jq 'del(.[].updated_at)' | jq -c 'sort_by(.type, .id)' | jq . > /tmp/kibana-bulk-export-saved-objects.json

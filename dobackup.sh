@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 echo "creating Kibana backup"
 
 if [[ -z $KIBANA_SPACES ]]; then
